@@ -11,11 +11,13 @@ body {
   color: #222;
   overflow-x: hidden;
   margin: 0;
+  perspective: 1000px;
 }
 
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   width: 100vw;
@@ -65,7 +67,7 @@ button:focus {
   outline: none;
 }
 
-button:active {
+#open:active {
   transform: scale(0.9);
 }
 
@@ -84,6 +86,7 @@ button:active {
 }
 
 .card {
+  transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -97,7 +100,7 @@ button:active {
 }
 
 .top {
-  margin-top: 30px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,15 +108,16 @@ button:active {
 
 .bgc-circle {
   position: relative;
-  width: 10rem;
+  width: 15rem;
   background: linear-gradient(to right, rgba(245, 70, 66, 0.75), rgba(8, 83, 156, 0.75));
-  height: 10rem;
+  height: 15rem;
   border-radius: 50%;
 }
 
 img {
   position: absolute;
-  width: 15rem;
+  width: 18rem;
+  transition: all 0.75s ease-out;
 }
 
 .mid {
@@ -121,23 +125,28 @@ img {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 50px;
+  padding: 35px;
 }
 
 .mid h1 {
   font-size: 2.5rem;
+  margin-top: 0;
+  transition: all 0.75s ease-out;
 }
 
 .mid p {
   color: #333;
   line-height: 1.5rem;
   font-family: Lato;
+  text-align: center;
+  transition: all 0.75s ease-out;
 }
 
 .mid ul {
   display: flex;
   justify-content: space-around;
   list-style: none;
+  transition: all 0.75s ease-out;
 }
 
 .mid li {
@@ -160,27 +169,84 @@ img {
 
 .bot {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .bot button {
   font-family: Lato;
   letter-spacing: 0.1rem;
-  width: 100%;
   padding: 1rem 0rem;
   background: #f54642;
   border: none;
+  width: 80%;
   color: white;
   cursor: pointer;
   border-radius: 30px;
   font-weight: bolder;
+  transition: all 0.75s ease-out;
 }
 
-footer {
+.info {
   position: fixed;
+  margin-top: 150px;
+  font-weight: 600;
   bottom: -55px;
   margin: 25px;
   width: 100%;
   height: 25px;
+  color: white;
+  cursor: default;
+}
+
+.type {
+  font-size: 32px;
+}
+
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  padding-left: 30px;
+}
+
+nav ul li {
+  text-transform: uppercase;
+  margin: 40px 0;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in;
+  color: white;
+  font-weight: 600;
+  cursor: default;
+}
+
+nav ul li:hover {
+  color: black;
+}
+
+nav ul li + li {
+  margin-left: 25px;
+  transform: translateX(-150%);
+}
+
+nav ul li + li + li {
+  margin-left: 50px;
+  transform: translateX(-200%);
+}
+
+nav ul li i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.container.show-nav + nav li {
+  transform: translateX(0);
+  transition-delay: 0.1s;
 }
 
 @media (max-width: 480px) {
