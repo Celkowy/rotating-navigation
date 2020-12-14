@@ -25,7 +25,7 @@ content.addEventListener('mousemove', e => {
 })
 
 content.addEventListener('mouseenter', () => {
-  card.style.transition = 'none'
+  card.style.transition = 'all 0.1s ease'
   title.style.transform = 'translateZ(150px)'
   img.style.transform = 'translateZ(200px) rotateZ(-45deg)'
   paragraph.style.transform = 'translateZ(125px)'
